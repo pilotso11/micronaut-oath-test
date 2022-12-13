@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.example
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [amazon-cognito, annotation-api, app-name, data, data-jpa, hibernate-jpa, http-client, jackson-databind, java, java-application, jax-rs, jax-rs-security, jdbc-hikari, junit, logback, lombok, management, maven, micrometer, micrometer-annotation, mockito, nats, netty-server, openapi, postgres, readme, security, security-annotations, security-jwt, security-oauth2, shade, swagger-ui, test-resources, views-thymeleaf, yaml]
