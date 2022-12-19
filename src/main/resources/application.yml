@@ -5,11 +5,21 @@ micronaut:
     enabled: true
   security:
     authentication: idtoken
+    oauth2:
+      clients:
+        cognito:
+          client-id: ${OAUTH_CLIENT_ID:77por3ndcbviqde5o7brav5poj}
+          client-secret: ${OAUTH_CLIENT_SECRET:}
+          openid:
+            issuer: https://cognito-idp.${COGNITO_REGION:us-east-1}.amazonaws.com/${COGNITO_POOL_ID:us-east-1_lUZuZs1zq}/
     intercept-url-map:
     - access: isAnonymous()
       pattern: /swagger/**
     - access: isAnonymous()
       pattern: /swagger-ui/**
+    endpoints:
+      logout:
+        get-allowed: true
   router:
     static-resources:
       swagger:
@@ -23,8 +33,13 @@ datasources:
     driverClassName: org.postgresql.Driver
     db-type: postgres
     dialect: POSTGRES
+    url: jdbc:postgresql://postgres:5432/demodb # Use JDBC style url
+    username: ${pg.user:postgres}
+    password: ${pg.secret:}
+
 nats.addresses:
 - nats://localhost:4222
+
 jpa:
   default:
     properties:
